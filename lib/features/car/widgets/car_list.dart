@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
 
-class CarListView extends StatelessWidget {
+class CarListView extends StatefulWidget {
   const CarListView({
     super.key,
   });
+
+  @override
+  State<CarListView> createState() => _CarListViewState();
+}
+
+class _CarListViewState extends State<CarListView> {
+  String? markName;
+
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    assert(args != null && args is String, 'You mat provide string args');
+    markName = args as String;
+    setState(() {});
+    debugPrint(markName);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
